@@ -8,11 +8,13 @@ import Control.Monad
 getFiles :: [String] -> IO [String]
 getFiles = filterM doesFileExist
 
+-- print a file into stdout
 printFile :: String -> IO ()
 printFile file = do
     content <- readFile file
     putStr content
 
-main :: IO()
+-- compose everything together
+main :: IO ()
 main = getArgs >>= getFiles >>= mapM_ printFile
 
